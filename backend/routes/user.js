@@ -51,7 +51,9 @@ router.post('/login', (req, res, next) => {
         'mean-stack-project',
         { expiresIn: '1h' }
       );
-      res.status(200).json({ token: token, expiresIn: 3600 });
+      res
+        .status(200)
+        .json({ token: token, expiresIn: 3600, userId: fetchedUser._id });
     })
     .catch((err) => {
       res.status(401).json({
